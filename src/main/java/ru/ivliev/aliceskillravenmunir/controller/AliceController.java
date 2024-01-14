@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import ru.ivliev.aliceskillravenmunir.dto.AliceResponse;
 
+import java.util.HashMap;
 import java.util.Map;
 
 @Slf4j
@@ -20,8 +21,9 @@ public class AliceController {
     private final ObjectMapper objectMapper;
 
     @PostMapping("/")
-    public ResponseEntity<AliceResponse> alice(@RequestBody Map request) throws JsonProcessingException {
-        log.info(objectMapper.writeValueAsString(request));
+    public ResponseEntity<AliceResponse> alice(@RequestBody String request) throws JsonProcessingException {
+        log.info(request);
+//        log.info(objectMapper.writeValueAsString(request));
         return ResponseEntity.ok(new AliceResponse("yes"));
     }
 
